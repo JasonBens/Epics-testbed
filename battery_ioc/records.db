@@ -1,0 +1,21 @@
+record(ai, "BATTERY:VOLTAGE") {
+    field(DESC, "BATTERY STATE OF CHARGE")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+}
+
+record(ao, "BATTERY:STATE_OF_CHARGE"){
+    field(DESC, "BATTERY STATE OF CHARGE")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+}

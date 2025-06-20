@@ -1,0 +1,41 @@
+record(ai, "SOLAR:TOTAL_POWER") {
+    field(DESC, "TOTAL AVAILABLE SOLAR POWER")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+    field(SCAN, "1 second")
+    field(SIMM, "YES")
+    field(SIOL, "SIM:SOLAR:TOTAL_POWER")
+}
+
+record(ao, "SOLAR:ALLOCATED_POWER") {
+    field(DESC, "POWER CURRENTLY ALLOCATED FROM SOLAR")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+    field(SIMM, "YES")
+    field(SIOL, "SIM:SOLAR:ALLOCATED_POWER")
+}
+
+record(calc, "SOLAR:CALC:UNALLOCATED_POWER") {
+    field(DESC, "UNALLOCATED POWER FROM SOLAR (CALC)")
+    field(CALC, "A - B")
+    field(INPA, "SOLAR:TOTAL_POWER")
+    field(INPB, "SOLAR:ALLOCATED_POWER")
+}
+
+record(ao, "SOLAR:UNALLOCATED_POWER") {
+    field(DESC, "UNALLOCATED POWER FROM SOLAR")
+    field(DOL, "SOLAR:CALC:UNALLOCATED_POWER")
+    field(OMSL, "closed_loop")
+    field(SIMM, "YES")
+    field(SIOL, "SIM:SOLAR:UNALLOCATED_POWER")
+}

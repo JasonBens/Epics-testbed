@@ -1,0 +1,28 @@
+record(ai, "WIND:TOTAL_POWER") {
+    field(DESC, "TOTAL AVAILABLE WIND POWER")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+}
+
+record(ao, "WIND:ALLOCATED_POWER") {
+    field(DESC, "POWER CURRENTLY ALLOCATED FROM WIND")
+    field(VAL, "0")
+    field(HIGH, "100")
+    field(LOLO, "0")
+    field(HIHI, "90")
+    field(HIGH, "80")
+    field(LOW, "10")
+    field(LOLO, "0")
+}
+
+record(calc, "WIND:UNALLOCATED_POWER") {
+    field(DESC, "POWER CURRENTLY UNALLOCATED FROM WIND")
+    field(CALC, "WIND:TOTAL_POWER - WIND:ALLOCATED_POWER")
+    field(INPA, "WIND:TOTAL_POWER")
+    field(INPB, "WIND:ALLOCATED_POWER")
+}

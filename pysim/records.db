@@ -1,0 +1,28 @@
+# Simulation-specific records
+record(bo, "SIM:IS_RUNNING") {
+    field(DESC, "SIMULATION RUNNING")
+    field(VAL, "0")
+    field(OMSL, "supervisory")
+    field(ONAM, "SIM:RUN")
+    field(ZNAM, "SIM:STOP")
+}
+
+# Solar Power Simulation Records
+record(ao, "SIM:SOLAR:TOTAL_POWER") {
+    field(DESC, "SIM: TOTAL AVAILABLE SOLAR POWER")
+    field(VAL, "0")
+    field(SIMM, "YES")
+    field(SIOL, "SOLAR:TOTAL_POWER")
+}
+
+record(ai, "SIM:SOLAR:ALLOCATED_POWER") {
+    field(DESC, "SIM: CURRENT ALLOCATED SOLAR POWER")
+    field(SIMM, "YES")
+    field(SIOL, "SOLAR:ALLOCATED_POWER")
+}
+
+record(ai, "SIM:SOLAR:UNALLOCATED_POWER") {
+    field(DESC, "SIM: CURRENT UNALLOCATED SOLAR POWER")
+    field(SIMM, "YES")
+    field(SIOL, "SOLAR:UNALLOCATED_POWER")
+}
