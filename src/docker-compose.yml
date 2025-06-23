@@ -19,7 +19,7 @@ services:
     hostname: wind_ioc
     networks:
       - epics-net
-      
+
   pysim:
     build: ./pysim
     container_name: pysim
@@ -37,6 +37,23 @@ services:
     environment:
       - EPICS_CA_AUTO_ADDR_LIST=NO
       - EPICS_CA_ADDR_LIST=ioc1
+
+  phoebus:
+    build: ./phoebus
+    container_name: phoebus
+    hostname: phoebus
+    networks:
+      - epics-net
+    command: sleep infinity # Keep the container running
+    environment:
+      - DISPLAY
+      - WAYLAND_DISPLAY=wayland-0
+      - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+    volumes:
+      - /mnt/wslg:/mnt/wslg
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    stdin_open: true
+    tty: true
 
 networks:
   epics-net:
