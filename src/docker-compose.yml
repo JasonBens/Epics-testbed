@@ -42,18 +42,22 @@ services:
     build: ./phoebus
     container_name: phoebus
     hostname: phoebus
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/tmp/.Xauthority
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/tmp/.Xauthority:ro
+      # Persist Phoebus user settings
+      - phoebus-config:/root/.phoebus
     networks:
       - epics-net
-    command: sleep infinity # Keep the container running
-    environment:
-      - DISPLAY
-      - WAYLAND_DISPLAY=wayland-0
-      - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
-    volumes:
-      - /mnt/wslg:/mnt/wslg
-      - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
+    restart: unless-stopped
 
 networks:
   epics-net:
+
+volumes:
+  phoebus-config:
