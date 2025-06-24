@@ -1,7 +1,5 @@
 FROM eclipse-temurin:latest
 
-WORKDIR /workspace
-
 # Install python
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -17,9 +15,14 @@ RUN apt-get update && apt-get install -y \
     libxrandr2 \
     libgtk2.0-0 \
     && rm -rf /var/lib/apt/lists/*
-RUN curl -L -o /opt/visualDCT.tar.gz https://github.com/epics-extensions/VisualDCT/releases/download/v2.8.3/VisualDCT-2.8.3-distribution.tar.gz \
-    && tar -xzf /opt/visualDCT.tar.gz -C /opt \
+RUN mkdir /opt/visualDCT \
+    && curl -L -o /opt/visualDCT.tar.gz https://github.com/epics-extensions/VisualDCT/releases/download/v2.8.3/VisualDCT-2.8.3-distribution.tar.gz \
+    && tar -xzvf /opt/visualDCT.tar.gz -C /opt/visualDCT --strip-components=1 \
     && rm /opt/visualDCT.tar.gz
+WORKDIR /opt/visualDCT
+COPY assets/dbd.tar.gz ./share/dbd.tar.gz
+RUN tar -xzf ./share/dbd.tar.gz -C ./share/ \
+    && rm ./share/dbd.tar.gz
 
 # Install Docker CLI and Compose V2
 RUN apt-get update && apt-get install -y \
@@ -31,5 +34,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 # TODO: Review --break-system-packages.  Should be okay in a container, but may break as more packages are added.
-COPY requirements.txt /tmp/requirements.txt
+COPY assets/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir --break-system-packages -r /tmp/requirements.txt
+
+WORKDIR /home
