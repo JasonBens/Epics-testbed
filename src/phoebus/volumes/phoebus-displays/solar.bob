@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-06-25 09:56:56 by root-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>550</width>
+  <height>440</height>
+  <widget type="label" version="2.0.0">
+    <name>Title</name>
+    <class>TITLE</class>
+    <text>Solar Simulator Display</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="meter" version="3.0.0">
+    <name>Total Power Meter</name>
+    <pv_name>SOLAR:TOTAL_POWER</pv_name>
+    <x>140</x>
+    <y>109</y>
+    <width>200</width>
+    <height>100</height>
+  </widget>
+  <widget type="meter" version="3.0.0">
+    <name>Remaining Power Meter</name>
+    <pv_name>SOLAR:POWER_UNALLOC</pv_name>
+    <x>270</x>
+    <y>240</y>
+    <width>200</width>
+    <height>100</height>
+  </widget>
+  <widget type="meter" version="3.0.0">
+    <name>Allocated Power Meter</name>
+    <pv_name>SOLAR:POWER_ALLOC_SETPOINT</pv_name>
+    <x>10</x>
+    <y>240</y>
+    <width>200</width>
+    <height>100</height>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box</name>
+    <pv_name>SOLAR:POWER_ALLOC_OVERRIDE</pv_name>
+    <label>Override</label>
+    <x>10</x>
+    <y>350</y>
+  </widget>
+  <widget type="scaledslider" version="2.0.0">
+    <name>Scaled Slider</name>
+    <pv_name>SOLAR:MANUAL_POWER_ALLOC_SETPOINT</pv_name>
+    <x>10</x>
+    <y>380</y>
+    <width>200</width>
+    <height>60</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SECTION</class>
+    <text>Allocated Power</text>
+    <x>10</x>
+    <y>210</y>
+    <width>200</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>2</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <class>SECTION</class>
+    <text>Available Power</text>
+    <x>140</x>
+    <y>80</y>
+    <width>200</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>2</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <class>SECTION</class>
+    <text>Remaining Unallocated Power</text>
+    <x>270</x>
+    <y>210</y>
+    <width>200</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>2</vertical_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>SIM:IS_RUNNING</pv_name>
+    <x>10</x>
+    <y>31</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>SIM:IS_RUNNING</text>
+    <x>40</x>
+    <y>31</y>
+    <width>140</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED_1</name>
+    <pv_name>SOLAR:IS_RUNNING</pv_name>
+    <x>10</x>
+    <y>51</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>SOLAR:IS_RUNNING</text>
+    <x>40</x>
+    <y>51</y>
+    <width>140</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

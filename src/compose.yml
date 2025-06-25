@@ -48,8 +48,8 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ${XAUTHORITY:-$HOME/.Xauthority}:/tmp/.Xauthority:ro
-      # Persist Phoebus user settings
-      - phoebus-config:/root/.phoebus
+      # Persist Phoebus displays
+      - ./phoebus/volumes/phoebus-displays:/usr/local/phoebus/display
     networks:
       - epics-net
     stdin_open: true
