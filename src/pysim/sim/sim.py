@@ -2,30 +2,28 @@ import time
 import solar
 import channel_access as ca
 
+class Simulator:
+    def __init__(self) -> None:
+        self.solar_simulator = solar.Simulator()
 
-def init_simulation():
-    """
-    Sets the initial state of the simulation and pushes it to the PVs.
-    """
-    solar.set_solar_states({"SIM:SOLAR:TOTAL_POWER": 100.0})
-    ca.put("SIM:IS_RUNNING", 0)
-    print("Simulation initialized")
+    def start(self):
+        self.solar_simulator.start()
+        while ca.get("SIM:IS_RUNNING") is None:
+            print("Waiting for the pysim IOC to connect...")
+            time.sleep(5)
+        while ca.put("SIM:IS_RUNNING", 1) is None:
+            time.sleep(5)
+        print("Simulation started.")
 
-
-def run_simulation():
-    ca.put("SIM:IS_RUNNING", 1)
-    print("Simulation started.")
-    while True:
-        solar_setpoints: dict = solar.get_solar_setpoints()
-        solar_states = solar.run_solar_simulation(solar_setpoints)
-        solar.set_solar_states(solar_states)
-        time.sleep(0.5)
-
-
+    def tick(self):
+        self.solar_simulator.tick()
+        
 def main():
-    init_simulation()
-    run_simulation()
-
+    simulator = Simulator()
+    simulator.start()
+    while True:
+        simulator.tick()
+        time.sleep(0.5)
 
 if __name__ == "__main__":
     main()

@@ -7,14 +7,13 @@
   "mounts": [
     "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock",
     "type=bind,source=${localWorkspaceFolder}/src,target=/workspace,consistency=cached",
-    "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix",
-    "type=bind,source=${localEnv:XAUTHORITY},target=${localEnv:XAUTHORITY},consistency=cached"
+    "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix"
   ],
   "runArgs": [
     "--env",
     "DISPLAY",
-    "--env",
-    "XAUTHORITY=${localEnv:XAUTHORITY}"
+    // "--env",
+    // "XAUTHORITY=${localEnv:XAUTHORITY}"
   ],
   "customizations": {
     "vscode": {

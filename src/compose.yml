@@ -2,62 +2,42 @@ services:
   solar_ioc:
     build: ./solar_ioc
     container_name: solar_ioc
-    hostname: solar_ioc
-    networks:
-      - epics-net
+    network_mode: host
 
   battery_ioc:
     build: ./battery_ioc
     container_name: battery_ioc
-    hostname: battery_ioc
-    networks:
-      - epics-net
+    network_mode: host
 
   wind_ioc:
     build: ./wind_ioc
     container_name: wind_ioc
-    hostname: wind_ioc
-    networks:
-      - epics-net
+    network_mode: host
 
   pysim:
     build: ./pysim
     container_name: pysim
-    hostname: pysim
-    networks:
-      - epics-net
-
-  client:
-    image: ghcr.io/epics-containers/ioc-generic-developer:2025.4.2b1
-    container_name: client
-    stdin_open: true
-    tty: true
-    networks:
-      - epics-net
-    environment:
-      - EPICS_CA_AUTO_ADDR_LIST=NO
-      - EPICS_CA_ADDR_LIST=ioc1
+    network_mode: host
+    
+  ca_repeater:
+    build: ./ca_repeater
+    container_name: ca_repeater
+    network_mode: host
 
   phoebus:
     build: ./phoebus
     container_name: phoebus
-    hostname: phoebus
+    network_mode: host
     environment:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=/tmp/.Xauthority
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY:-$HOME/.Xauthority}:/tmp/.Xauthority:ro
       # Persist Phoebus displays
       - ./phoebus/volumes/phoebus-displays:/usr/local/phoebus/display
-    networks:
-      - epics-net
     stdin_open: true
     tty: true
     restart: unless-stopped
-
-networks:
-  epics-net:
 
 volumes:
   phoebus-config:
