@@ -9,21 +9,21 @@ from setpoints import Setpoints, Setpoint
 class Simulator:
     class PowerConsts:
         INIT_VAL = 100  # Initial value
-        BASELINE_VAL = 100  # Baseline power level for the wind simulation
+        BASELINE_VAL = 50  # Baseline power level for the wind simulation
         MIN_VAL = 0  # Minimum power level available
         MAX_VAL = 200  # Maximum power level available
         MAX_DEVIATION = 25.0  # Maximum deviation from the baseline power level
-        FILTER_WEIGHT = 0.9  # Weight for previous value in the running average
+        FILTER_WEIGHT = 0.75  # Weight for previous value in the running average
         GUST_BASELINE_VAL = (
             BASELINE_VAL  # Baseline power level for the wind simulation when gusting
         )
         GUST_MIN_VAL = 0  # Minimum power level available when gusting
-        GUST_MAX_VAL = 300  # Maximum power level available when gusting
+        GUST_MAX_VAL = 250  # Maximum power level available when gusting
         GUST_MAX_DEVIATION = (
-            100  # Maximum deviation from the baseline power level when gusting
+            75  # Maximum deviation from the baseline power level when gusting
         )
         GUST_FILTER_WEIGHT = (
-            0.9  # Weight for previous value in the running average when gusting
+            0.5  # Weight for previous value in the running average when gusting
         )
         STORM_BASELINE_VAL = (
             BASELINE_VAL * 2
@@ -34,7 +34,7 @@ class Simulator:
             100  # Maximum deviation from the baseline power level when storming
         )
         STORM_FILTER_WEIGHT = (
-            0.75  # Weight for previous value in the running average when storming
+            0.25  # Weight for previous value in the running average when storming
         )
 
     class AllocConsts:
@@ -58,20 +58,31 @@ class Simulator:
 
         _TRANSITION_PROBABILITY = {
             WeatherState.NORMAL: TransitionProbability(
-                list(WeatherState), [1000, 10, 1]
+                list(WeatherState), [989, 10, 1]
             ),
             WeatherState.GUSTING: TransitionProbability(
-                list(WeatherState), [10, 1000, 1]
+                list(WeatherState), [50, 949, 1]
             ),
-            WeatherState.STORM: TransitionProbability(list(WeatherState), [4, 1, 1000]),
+            WeatherState.STORM: TransitionProbability(list(WeatherState), [4, 1, 995]),
         }
 
         def __init__(self):
             self._state = self.WeatherState.NORMAL
 
         def tick(self):
+            prev_state = self._state
             choices = self._TRANSITION_PROBABILITY[self._state]
             self._state = random.choices(choices.population, choices.weights, k=1)[0]
+
+            if prev_state != self._state:
+                # Transition occured.
+                match self._state:
+                    case self.WeatherState.NORMAL:
+                        print("Weather state machine transitioned to NORMAL.")
+                    case self.WeatherState.GUSTING:
+                        print("Weather state machine transitioned to GUSTING.")
+                    case self.WeatherState.STORM:
+                        print("Weather state machine transitioned to STORM.")
 
         def is_normal(self):
             return self._state == self.WeatherState.NORMAL
@@ -193,7 +204,7 @@ class Simulator:
         filter_weight: float,
     ) -> float:
         deviation = random.uniform(-max_deviation, max_deviation)
-        total_power = (
-            filter_weight * (current_power + deviation) + (1 - filter_weight) * baseline
+        total_power = filter_weight * baseline + (1 - filter_weight) * (
+            current_power + deviation
         )
         return Simulator.clamp(total_power, min_val, max_val)
