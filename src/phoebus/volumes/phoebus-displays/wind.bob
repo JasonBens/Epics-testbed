@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-06-28 13:42:57 by root-->
+<!--Saved on 2025-06-28 13:43:02 by root-->
 <display version="2.0.0">
-  <name>Solar Power Plant</name>
+  <name>Wind Power Plant</name>
   <width>550</width>
   <height>440</height>
   <widget type="label" version="2.0.0">
     <name>Title</name>
     <class>TITLE</class>
-    <text>Solar Simulator Display</text>
+    <text>Wind Power Plant Simulator Display</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -24,7 +24,7 @@
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Total Power Meter</name>
-    <pv_name>SOLAR:TOTAL_POWER</pv_name>
+    <pv_name>WIND:TOTAL_POWER</pv_name>
     <x>140</x>
     <y>109</y>
     <width>200</width>
@@ -32,7 +32,7 @@
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Unallocated Power Meter</name>
-    <pv_name>SOLAR:POWER_UNALLOC</pv_name>
+    <pv_name>WIND:POWER_UNALLOC</pv_name>
     <x>270</x>
     <y>240</y>
     <width>200</width>
@@ -40,7 +40,7 @@
   </widget>
   <widget type="meter" version="3.0.0">
     <name>Allocated Power Meter</name>
-    <pv_name>SOLAR:POWER_ALLOC</pv_name>
+    <pv_name>WIND:POWER_ALLOC</pv_name>
     <x>10</x>
     <y>240</y>
     <width>200</width>
@@ -48,14 +48,14 @@
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box</name>
-    <pv_name>SOLAR:POWER_ALLOC_OVERRIDE</pv_name>
+    <pv_name>WIND:POWER_ALLOC_OVERRIDE</pv_name>
     <label>Override</label>
     <x>10</x>
     <y>350</y>
   </widget>
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
-    <pv_name>SOLAR:MANUAL_POWER_ALLOC_SETPOINT</pv_name>
+    <pv_name>WIND:MANUAL_POWER_ALLOC_SETPOINT</pv_name>
     <x>10</x>
     <y>380</y>
     <width>200</width>
@@ -137,13 +137,13 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED_1</name>
-    <pv_name>SOLAR:IS_RUNNING</pv_name>
+    <pv_name>WIND:IS_RUNNING</pv_name>
     <x>10</x>
     <y>51</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_4</name>
-    <text>SOLAR:IS_RUNNING</text>
+    <text>WIND:IS_RUNNING</text>
     <x>40</x>
     <y>51</y>
     <width>140</width>

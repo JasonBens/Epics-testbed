@@ -1,9 +1,11 @@
 import epics
+from typing import overload
 
 
 class Setpoint:
     def __init__(self, key: str):
         self._key = key
+
 
     def read_setpoint(self) -> float | None:
         value = epics.caget(self._key)

@@ -54,7 +54,7 @@ class Simulator:
         total_power = weight * (prev_power + deviation) + (1 - weight) * baseline
         return clamp(0, total_power, baseline * 2)
 
-    def calculate_max_power_allocated(self, setpoint) -> float:
+    def calculate_max_power_allocation(self, setpoint) -> float:
         """
         Calculates the maximum power allocatable, based on the desired setpoint.
         This includes non-idealities such as slew rate.
@@ -93,7 +93,7 @@ class Simulator:
 
         self._current_states = self.states_factory(
             self.calculate_total_power(),
-            self.calculate_max_power_allocated(current_setpoints["power_alloc"]),
+            self.calculate_max_power_allocation(current_setpoints["power_alloc"]),
         )
         self._current_states.write_states()
 
