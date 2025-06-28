@@ -3,6 +3,7 @@
 #! DBDEND
 
 
+
 record(ai, BATTERY:STATE_OF_CHARGE) {
   field(DESC, "Battery state of charge")
   field(DTYP, "Soft Channel")
@@ -18,7 +19,6 @@ record(ai, BATTERY:STATE_OF_CHARGE) {
   field(LOW, "10")
 }
 
-
 record(ai, BATTERY:AVAILABLE_POWER) {
   field(INP, "SIM:BATTERY:AVAILABLE_POWER")
   field(PREC, "2")
@@ -27,9 +27,19 @@ record(ai, BATTERY:AVAILABLE_POWER) {
   field(LOPR, "0")
 }
 
+record(bo, BATTERY:IS_RUNNING) {
+  field(DESC, "Battery IOC is running")
+  field(VAL, "0")
+  field(ZNAM, "BATTERY:STOP")
+  field(ONAM, "BATTERY:RUN")
+  field(OMSL, "supervisory")
+  field(PINI, "YES")
+}
+
 #! Further lines contain data used by VisualDCT
 #! View(0,0,1.0)
 #! Record(BATTERY:STATE_OF_CHARGE,280,297,0,0,"BATTERY:STATE_OF_CHARGE")
 #! Field("BATTERY:STATE_OF_CHARGE.INP",16777215,1,"BATTERY:STATE_OF_CHARGE.INP")
 #! Record(BATTERY:AVAILABLE_POWER,280,34,0,1,"BATTERY:AVAILABLE_POWER")
 #! Field("BATTERY:AVAILABLE_POWER.INP",16777215,1,"BATTERY:AVAILABLE_POWER.INP")
+#! Record(BATTERY:IS_RUNNING,20,20,0,1,"BATTERY:IS_RUNNING")
