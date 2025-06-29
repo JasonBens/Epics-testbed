@@ -37,7 +37,6 @@ services:
       - ./phoebus/volumes/phoebus-displays:/usr/local/phoebus/display
     stdin_open: true
     tty: true
-    restart: unless-stopped
 
 volumes:
   phoebus-config:

@@ -1,0 +1,1 @@
+Don't forget to run xhost +local:root
