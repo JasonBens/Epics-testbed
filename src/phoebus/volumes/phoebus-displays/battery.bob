@@ -1,17 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-06-28 20:45:50 by root-->
+<!--Saved on 2025-06-29 14:05:28 by root-->
 <display version="2.0.0">
   <name>Battery</name>
+  <width>550</width>
+  <height>360</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
-    <class>TITLE</class>
+    <class>Label</class>
     <text>Battery</text>
-    <x use_class="true">0</x>
-    <y use_class="true">0</y>
     <width>550</width>
     <height>31</height>
-    <font use_class="true">
+    <font>
       <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="tank" version="2.0.0">
+    <name>Battery</name>
+    <pv_name>BATTERY:STATE_OF_CHARGE</pv_name>
+    <x>140</x>
+    <y>160</y>
+    <width>40</width>
+  </widget>
+  <widget type="linearmeter" version="2.0.0">
+    <name>Available Power</name>
+    <pv_name>BATTERY:AVAILABLE_POWER</pv_name>
+    <x>10</x>
+    <y>80</y>
+    <width>400</width>
+    <height>80</height>
+    <colors>
+      <foreground_color>
+        <color name="Text" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="0" green="0" blue="0" alpha="0">
+        </color>
+      </background_color>
+      <needle_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </needle_color>
+      <knob_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </knob_color>
+      <normal_status_color>
+        <color red="194" green="198" blue="195">
+        </color>
+      </normal_status_color>
+      <minor_warning_color>
+        <color red="242" green="148" blue="141">
+        </color>
+      </minor_warning_color>
+      <major_warning_color>
+        <color red="240" green="60" blue="46">
+        </color>
+      </major_warning_color>
+      <is_gradient_enabled>true</is_gradient_enabled>
+      <is_highlighting_of_active_regions_enabled>true</is_highlighting_of_active_regions_enabled>
+    </colors>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Available Power Label</name>
+    <class>SECTION</class>
+    <text>Total power available for battery charging</text>
+    <x>10</x>
+    <y>40</y>
+    <width>400</width>
+    <height>30</height>
+    <font use_class="true">
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
     <foreground_color use_class="true">
@@ -19,19 +79,27 @@
       </color>
     </foreground_color>
     <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>2</vertical_alignment>
   </widget>
-  <widget type="tank" version="2.0.0">
-    <name>Battery</name>
-    <pv_name>BATTERY:STATE_OF_CHARGE</pv_name>
+  <widget type="label" version="2.0.0">
+    <name>Battery Label</name>
+    <class>SECTION</class>
+    <text>Battery charge (MW)</text>
     <x>190</x>
-    <y>180</y>
-  </widget>
-  <widget type="linearmeter" version="2.0.0">
-    <name>Available Power</name>
-    <pv_name>BATTERY:AVAILABLE_POWER</pv_name>
-    <x>140</x>
-    <y>50</y>
-    <width>250</width>
-    <height>80</height>
+    <y>160</y>
+    <width>80</width>
+    <height>200</height>
+    <font use_class="true">
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
   </widget>
 </display>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-06-29 14:07:43 by root-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>730</width>
+  <height>460</height>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>Solar</name>
+        <file>solar.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Wind</name>
+        <file>wind.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Battery</name>
+        <file>battery.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>730</width>
+    <height>460</height>
+  </widget>
+</display>
